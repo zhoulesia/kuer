@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["product_id", "product_name", "category", "appearance", "structure", "visual_lock"],
+  "properties": {
+    "product_id": {"type": "string"}, "product_name": {"type": "string"}, "category": {"type": "string"},
+    "appearance": {"type": "object", "properties": {
+      "primary_color": {"type": "string"}, "secondary_color": {"type": "string"}, "material": {"type": "string"}, "texture": {"type": "string"}, "finish": {"type": "string"}, "shape": {"type": "string"}
+    }},
+    "structure": {"type": "object", "properties": {"main_body": {"type": "string"}, "components": {"type": "array"}, "component_count": {"type": "integer"}, "connections": {"type": "array"}, "moving_parts": {"type": "array"}}},
+    "dimensions": {"type": "object"},
+    "visual_identity": {"type": "object"},
+    "selling_points": {"type": "object"},
+    "visual_lock": {"type": "array", "items": {"type": "string"}},
+    "unknowns": {"type": "array", "items": {"type": "string"}},
+    "forbidden_changes": {"type": "array", "items": {"type": "string"}}
+  }
+}

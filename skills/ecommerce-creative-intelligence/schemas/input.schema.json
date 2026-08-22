@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["product", "platform", "languages"],
+  "properties": {
+    "product": {"type": "object", "required": ["name", "category"], "properties": {
+      "name": {"type": "string"}, "category": {"type": "string"}, "description": {"type": "string"},
+      "features": {"type": "array", "items": {"type": "string"}},
+      "materials": {"type": "array", "items": {"type": "string"}},
+      "dimensions": {"type": "object"}, "weight": {"type": ["string", "null"]},
+      "colors": {"type": "array", "items": {"type": "string"}},
+      "variants": {"type": "array", "items": {"type": "string"}},
+      "package_contents": {"type": "array", "items": {"type": "string"}},
+      "target_customer": {"type": "string"}, "usage": {"type": "array", "items": {"type": "string"}},
+      "verified_claims": {"type": "array", "items": {"type": "string"}}
+    }},
+    "product_images": {"type": "array", "items": {"type": "string"}},
+    "platform": {"type": "object", "required": ["name", "market"], "properties": {
+      "name": {"type": "string"}, "market": {"type": "string"}, "aspect_ratio": {"type": "string"}
+    }},
+    "languages": {"type": "array", "minItems": 1, "items": {"enum": ["English", "Japanese", "Chinese"]}},
+    "image_count": {"type": "integer", "minimum": 6, "maximum": 8},
+    "research": {"type": "object", "properties": {"enabled": {"type": "boolean"}, "competitor_count": {"type": "integer"}, "time_range": {"type": "string"}}}
+  }
+}
