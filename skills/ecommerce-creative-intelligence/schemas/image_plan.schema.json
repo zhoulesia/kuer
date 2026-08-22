@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "array",
+  "minItems": 6,
+  "maxItems": 8,
+  "items": {
+    "type": "object",
+    "required": ["id", "type", "objective"],
+    "properties": {
+      "id": {"type": "string"}, "type": {"type": "string"}, "objective": {"type": "string"},
+      "scene": {"type": "string"}, "product_angle": {"type": "string"}, "copy_required": {"type": "boolean"},
+      "creative_gap": {"type": "string"}
+    }
+  }
+}
