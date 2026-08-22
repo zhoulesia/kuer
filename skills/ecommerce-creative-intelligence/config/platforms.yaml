@@ -1,0 +1,21 @@
+platforms:
+  tiktok_shop:
+    default_aspect_ratio: "9:16"
+    text_density: low
+    priorities: [mobile_readability, product_visibility, strong_first_impression]
+  amazon:
+    default_aspect_ratio: "1:1"
+    text_density: medium
+    priorities: [product_accuracy, clarity, specification]
+  instagram:
+    default_aspect_ratio: "4:5"
+    text_density: low
+    priorities: [visual_impact, mobile_readability]
+  shopify:
+    default_aspect_ratio: "4:5"
+    text_density: medium
+    priorities: [brand_consistency, product_clarity]
+  custom:
+    default_aspect_ratio: "1:1"
+    text_density: medium
+    priorities: [product_clarity]
