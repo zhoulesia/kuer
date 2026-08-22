@@ -1,4 +1,4 @@
-"""Framework-neutral pipeline. Business logic stays provider-agnostic."""
+"""Provider-neutral orchestration for the e-commerce creative workflow."""
 from typing import Any
 from .contracts import MarketResearchProvider, ProductVisionProvider, ImageGenerationProvider, CreativeModelProvider
 
@@ -13,10 +13,12 @@ class CreativePipeline:
 
     def run(self, request: dict[str, Any]) -> dict[str, Any]:
         research_result = self.research.search(request) if request.get("research", {}).get("enabled", True) else None
+        vision_result = self.vision.analyze(request)
         product_master = self.creative.complete("product_master", {
             "request": request,
-            "vision": self.vision.analyze(request),
+            "vision": vision_result,
         })
+        product_master.setdefault("source_images", request.get("product_images", []))
         creative_analysis = self.creative.complete("creative_analysis", {
             "research": research_result.__dict__ if research_result else None,
             "product_master": product_master,
@@ -48,8 +50,9 @@ class CreativePipeline:
             "copy_master": copy_master,
             "platform": request.get("platform", {}),
         })
+        prompt_items = prompts.get("prompts", prompts if isinstance(prompts, list) else [])
         generated = self.image_generation.generate({
-            "prompts": prompts,
+            "prompts": prompt_items,
             "product_master": product_master,
             "platform": request.get("platform", {}),
         })
